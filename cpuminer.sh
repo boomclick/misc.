@@ -63,8 +63,9 @@ function username {
                 export USERNAME="typefacechaos1.3"
         fi
         if [ "$POOL" == 2 ]; then
-                                                                                                                                                                                                                            1,1           Top
-
+                export USERNAME="typefacechaos.1"
+        fi
+}
 
 
 function poolport {
