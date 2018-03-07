@@ -12,8 +12,12 @@ fi
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt install -y progress vim deluge deluged deluge-console deluge-common nfs-kernel-server
-sudo echo "/home 		 169.254.117.235(rw,sync,fsid=0,crossmnt,no_subtree_check)" >> /etc/exports
 
+#insert your ip on this line; setup for nfs
+sudo echo "/home 		 169.254.117.235(rw,sync,fsid=0,crossmnt,no_subtree_check)" >> /etc/exports
+sudo service nfs-server restart
+showmount -e
+sleep 2
 
 #bfgminer dependencies
 
