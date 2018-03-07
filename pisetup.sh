@@ -4,7 +4,9 @@
 
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install -y progress vim deluge deluged deluge-console deluge-common
+sudo apt install -y progress vim deluge deluged deluge-console deluge-common nfs-kernel-server
+sudo echo "/home 		 169.254.117.235(rw,sync,fsid=0,crossmnt,no_subtree_check)" >> /etc/exports
+
 
 #bfgminer dependencies
 
