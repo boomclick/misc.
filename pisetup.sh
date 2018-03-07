@@ -2,6 +2,13 @@
 #preparations for pi
 #© 2018. This program is released into the public domain.
 
+if [ "$(whoami)" == "root" ]; then
+        printf "awesome! you're root, and the script must be run by root\\n"
+else
+        printf "you are not root, and the script must be run as root. exiting...\\n"
+        exit
+fi
+
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt install -y progress vim deluge deluged deluge-console deluge-common nfs-kernel-server
