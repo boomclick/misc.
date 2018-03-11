@@ -69,14 +69,12 @@ function poolport {
 }
 
 function main {
-        if [ -f ~/minerd ]; then
-                currency
-                pool
-                POOLPORT=$(poolport)
-                USERNAME=$(username)
-                cd
-                ./bfgminer/bfgminer --scrypt -o stratum+tcp://"$POOLPORT" -u "$USERNAME" -p x -S all --set GSD:clock=300        else
-                printf "you must have minerd to run this script, please install and try again.\\n"
-        fi
+        
+        currency
+        pool
+        POOLPORT=$(poolport)
+        USERNAME=$(username)
+        cd
+        ./bfgminer/bfgminer --scrypt -o stratum+tcp://"$POOLPORT" -u "$USERNAME" -p x -S all --set GSD:clock=300
 }
 main
