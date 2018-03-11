@@ -53,16 +53,16 @@ function poolport {
                 export POOLPORT="us.multipool.us:3351"
                 fi ;
                 if [ "$CURRENCY" == 2 ]; then
-                        export POOLPORT="us.multipool.us:3348"
+                        POOLPORT="us.multipool.us:3348"
                 fi ;
                 if [ "$CURRENCY" == 3 ]; then
-                        export POOLPORT="us.multipool.us:3359"
+                        POOLPORT="us.multipool.us:3359"
                 fi
                 if [ "$CURRENCY" == 4 ]; then
-                        export POOLPORT="us.multipool.us:3334"
+                        POOLPORT="us.multipool.us:3334"
                 fi;;
                 "2")
-                        export POOLPORT="s1.theblocksfactory.com:9004";;
+                        POOLPORT="s1.theblocksfactory.com:9004";;
         esac
 
         echo $POOLPORT
@@ -72,8 +72,8 @@ function main {
         
         currency
         pool
-        POOLPORT=$(poolport)
-        USERNAME=$(username)
+        poolport
+        username
         cd
         ./bfgminer/bfgminer --scrypt -o stratum+tcp://"$POOLPORT" -u "$USERNAME" -p x -S all --set GSD:clock=300
 }
