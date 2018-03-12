@@ -48,14 +48,24 @@ function quietness {
 }
 
 function threads {
-        printf "how many processors will you use (out of $(nproc))?\\n"
+        printf "how many processors will you use (out of %s)?\\n" "$(nproc)"
         read -r THREADS
         if [ "$THREADS" \< "$(nproc)" ]; then
-                printf "you will use $THREADS threads/processors.\\n"
+                printf "you will use %s  threads/processors.\\n" "$THREADS"
         else
                 printf "invalid selection, try again.\\n"
                 threads
         fi
+}
+
+function location {
+	printf "where are you? select one:\\n1.)europe\\n2.)america\\n"
+	read -r LOCATION
+	case $LOCATION in
+		"1") LOCATION="eu";;
+		"2") LOCATION="us";;
+		*) printf "invalid selection, try again.\\n" ; location;;
+	esac
 }
 
 function username {
@@ -71,16 +81,16 @@ function username {
 function poolport {
         case $POOL in
                 "1") if [ "$CURRENCY" == 1 ]; then
-                        POOLPORT="us.multipool.us:3351"
+                        POOLPORT=".multipool.us:3351"
                 fi ;
                 if [ "$CURRENCY" == 2 ]; then
-                        POOLPORT="us.multipool.us:3348"
+                        POOLPORT=".multipool.us:3348"
                 fi ;
                 if [ "$CURRENCY" == 3 ]; then
-                        POOLPORT="us.multipool.us:3359"
+                        POOLPORT=".multipool.us:3359"
                 fi
                 if [ "$CURRENCY" == 4 ]; then
-                        POOLPORT="us.multipool.us:3334"
+                        POOLPORT=".multipool.us:3334"
                 fi;;
                 "2")
                         POOLPORT="s1.theblocksfactory.com:9004";;
@@ -96,9 +106,10 @@ function main {
                 threads
                 poolport
                 username
+		location
 
                 cd
-                ./minerd -o stratum+tcp://"$POOLPORT" -u "$USERNAME" -p x "$QUIET" -t "$THREADS"
+                ./minerd -o stratum+tcp://"$LOCATION""$POOLPORT" -u "$USERNAME" -p x "$QUIET" -t "$THREADS"
         else
                 printf "you must have minerd to run this script, please install and try again.\\n"
         fi
