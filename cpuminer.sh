@@ -86,7 +86,6 @@ function poolport {
                         POOLPORT="s1.theblocksfactory.com:9004";;
         esac
 
-        echo $POOLPORT
 }
 
 function main {
@@ -95,8 +94,8 @@ function main {
                 pool
                 quietness
                 threads
-                POOLPORT=$(poolport)
-                USERNAME=$(username)
+                poolport
+                username
 
                 cd
                 ./minerd -o stratum+tcp://"$POOLPORT" -u "$USERNAME" -p x "$QUIET" -t "$THREADS"
