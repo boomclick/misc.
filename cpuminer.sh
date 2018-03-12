@@ -60,10 +60,10 @@ function threads {
 
 function username {
         if [ "$POOL" == 1 ]; then
-                export USERNAME="typefacechaos1.3"
+                USERNAME="typefacechaos1.3"
         fi
         if [ "$POOL" == 2 ]; then
-                export USERNAME="typefacechaos.1"
+                USERNAME="typefacechaos.1"
         fi
 }
 
@@ -71,19 +71,19 @@ function username {
 function poolport {
         case $POOL in
                 "1") if [ "$CURRENCY" == 1 ]; then
-                export POOLPORT="us.multipool.us:3351"
+                        POOLPORT="us.multipool.us:3351"
                 fi ;
                 if [ "$CURRENCY" == 2 ]; then
-                        export POOLPORT="us.multipool.us:3348"
+                        POOLPORT="us.multipool.us:3348"
                 fi ;
                 if [ "$CURRENCY" == 3 ]; then
-                        export POOLPORT="us.multipool.us:3359"
+                        POOLPORT="us.multipool.us:3359"
                 fi
                 if [ "$CURRENCY" == 4 ]; then
-                        export POOLPORT="us.multipool.us:3334"
+                        POOLPORT="us.multipool.us:3334"
                 fi;;
                 "2")
-                        export POOLPORT="s1.theblocksfactory.com:9004";;
+                        POOLPORT="s1.theblocksfactory.com:9004";;
         esac
 
         echo $POOLPORT
