@@ -1,0 +1,19 @@
+#!/bin/bash
+#retrieves cpuminer output from /var/log/syslog
+#© 2018. This program is released into the public domain.
+
+ACCEPTEDPLUS="-1"
+stop="N"
+while [ $stop = "N" ]
+do
+	ACCEPTED=$(grep -ic "Accepted" /var/log/syslog)
+	if [ "$ACCEPTED" \> "$ACCEPTEDPLUS" ]; then	
+		echo "$ACCEPTED"" shares have been accepted."
+		ACCEPTEDPLUS=$ACCEPTED
+	fi
+	
+	grep "cpuminer" /var/log/syslog | tail 
+	sleep 5
+	
+	clear
+done
